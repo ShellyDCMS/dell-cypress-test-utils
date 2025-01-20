@@ -552,16 +552,16 @@ export class CypressHelper {
      * helper.when.focus('credentials-password')
      * ```
      */
-    focus: (dataTestID: string, index?: number) =>
-      this.get.elementByTestId(dataTestID, index).focus(),
+    focus: (dataTestID: string, index?: number, options?: Partial<Cypress.TypeOptions>) =>
+      this.get.elementByTestId(dataTestID, index).focus(options),
     /**
      * Blur a focused element.
      * This element must currently be in focus.
      * If you want to ensure an element is focused before blurring,
      * try using helper.when.focus() before helper.when.blur().
      */
-    blur: (dataTestID: string, index?: number) =>
-      this.get.elementByTestId(dataTestID, index).blur(),
+    blur: (dataTestID: string, index?: number, options?: Partial<Cypress.TypeOptions>) =>
+      this.get.elementByTestId(dataTestID, index).blur(options),
     /**
      * Clear the value of an input or textarea
      */
@@ -574,10 +574,10 @@ export class CypressHelper {
      * helper.when.type('credentials-password', 'new password')
      * ```
      */
-    type: (dataTestID: string, keys: string, index?: number) =>
+    type: (dataTestID: string, keys: string, index?: number, options?: Partial<Cypress.TypeOptions>) =>
       this.get
         .elementByTestId(dataTestID, index)
-        .type(keys, { parseSpecialCharSequences: false }),
+        .type(keys, { parseSpecialCharSequences: false, ...options }),
 
     /**
      * Type into a DOM element, including special characters
